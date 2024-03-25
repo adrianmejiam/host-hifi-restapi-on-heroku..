@@ -4,7 +4,6 @@
    "description": "🎵 🔋Privacy Focused Cross Platform Self Hostable Tidal Reverse Proxy / Tui + Batteries Included",
    "website": "https://tidal.401658.xyz",
    "logo": "https://github.com/sachinsenal0x64/picx-images-hosting/raw/master/test1.1ejfncjvbvuo.webp",
-   "success_url": "/",
    "env": {
       "CLIENT_ID": {
          "required": true,
