@@ -15,6 +15,20 @@
 
 > :beers: Join the community:  <a href="https://discord.gg/EbfftZ5Dd4">Discord</a>
 > [![](https://cdn.statically.io/gh/sachinsenal0x64/picx-images-hosting@master/discord.72y8nlaw5mdc.webp)](https://discord.gg/EbfftZ5Dd4)
+
+<br>
+
+# ❓ Requirements
+> [!TIP]
+> You can access reverse [api](https://github.com/sachinsenal0x64/Hifi-Tui?tab=readme-ov-file#-tidal-reverse-api--status) for free.
+
+- Tidal Subscription
+
+- Fill the [.env](https://github.com/sachinsenal0x64/host-hifi-restapi-on-vercel/blob/main/src/.env-example)
+
+- Redis (its free)
+
+- Grab Tokens / Ids Using [tidal_auth.py](https://github.com/sachinsenal0x64/hifi-tui/blob/main/tidal_auth/)
  
 <br>
 
