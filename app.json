@@ -1,46 +1,43 @@
 {
-   "name": "hifi proxy",
-   "repository": "https://github.com/momskidvaava/host-hifi-restapi-on-heroku.git",
-   "description": "🎵 🔋Privacy Focused Cross Platform Self Hostable Tidal Reverse Proxy / Tui + Batteries Included",
-   "website": "https://tidal.401658.xyz",
-   "logo": "https://github.com/sachinsenal0x64/picx-images-hosting/raw/master/test1.1ejfncjvbvuo.webp",
-   "success_url": "/",
-   "env": {
-      "CLIENT_ID": {
-         "required": true,
-         "value": ""
-      },
-      "CLIENT_SECRET": {
-         "required": true,
-         "value": ""
-      },
-      "TIDAL_REFRESH": {
-         "required": true,
-         "value": ""
-      },  
-      "USER_ID": {
-         "required": true,
-         "value": ""
-      },
-      "REDIS_URL": {
-         "required": true,
-         "value": ""
-      },  
-      "REDIS_PORT": {
-         "required": true,
-         "value": ""
-      },
-         "REDIS_PASSWORD": {
-         "required": true,
-         "value": ""
-      },
-          
-   },
-   "keywords": [
-      "tidal",
-      "music",
-      "python",
-      "hifi proxy",
-      "hifi tui"
-   ]
+  "name": "host-hifi-restapi-on-heroku",
+  "repository": "https://github.com/momskidvaava/host-hifi-restapi-on-heroku",
+  "description": "🎵 🔋Privacy Focused Cross Platform Self Hostable Tidal Reverse Proxy / Tui + Batteries Included",
+  "website": "https://tidal.401658.xyz",
+  "logo": "https://github.com/sachinsenal0x64/picx-images-hosting/raw/master/test1.1ejfncjvbvuo.webp",
+  "scripts": {},
+  "env": {
+    "CLIENT_ID": {
+      "required": true
+    },
+    "CLIENT_SECRET": {
+      "required": true
+    },
+    "REDIS_PASSWORD": {
+      "required": true
+    },
+    "REDIS_PORT": {
+      "required": true
+    },
+    "REDIS_URL": {
+      "required": true
+    },
+    "TIDAL_REFRESH": {
+      "required": true
+    },
+    "USER_ID": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "stack": "heroku-22"
 }
