@@ -17,7 +17,11 @@
       "TIDAL_REFRESH": {
          "required": true,
          "value": ""
-      },    
+      },  
+      "USER_ID": {
+         "required": true,
+         "value": ""
+      },
       "REDIS_URL": {
          "required": true,
          "value": ""
@@ -31,10 +35,6 @@
          "value": ""
       },
           
-      "USER_ID": {
-         "required": true,
-         "value": ""
-      },
    },
    "keywords": [
       "tidal",
