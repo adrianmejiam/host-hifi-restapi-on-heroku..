@@ -641,16 +641,16 @@ async def search_cover(id: Union[int, None] = None, q: Union[str, None] = None):
         )
 
 
-async def main():
-    config = uvicorn.Config(
-        "main:app",
-        host="0.0.0.0",
-        port=5000,
-        workers=8,
-    )
-    server = uvicorn.Server(config)
-    await server.serve()
+# async def main():
+#     config = uvicorn.Config(
+#         "main:app",
+#         host="0.0.0.0",
+#         port=5000,
+#         workers=8,
+#     )
+#     server = uvicorn.Server(config)
+#     await server.serve()
 
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+#     asyncio.run(main())
