@@ -1,5 +1,5 @@
 <p align="center">
- <img width="100px" src="https://sachinsenal0x64.github.io/picx-images-hosting/favicon512x512-vercel-typescript-express-api.58o5ubszquf4.webp" align="center" alt=":package: deploy-hifi-restapi-on-vercel" />
+ <img width="100px" src="https://github.com/sachinsenal0x64/picx-images-hosting/raw/master/heroku-ar21.3d4k1lp7vp.svg" align="center" alt=":package: deploy-hifi-restapi-on-vercel" />
  <h2 align="center">:package: Host HiFi REST API ON Heroku</h2>
 </p>
 
