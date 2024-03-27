@@ -228,10 +228,11 @@ async def get_track(
             "authorization": f"Bearer {tidal_token}",
         }
 
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(http2=True) as client:
             track_data = await client.get(url=track_url, headers=payload)
             info_data = await client.get(url=info_url, headers=payload)
 
+            print(track_data.http_version)
             final_data = track_data.json()["manifest"]
             decode_manifest = base64.b64decode(final_data)
             con_json = json.loads(decode_manifest)
