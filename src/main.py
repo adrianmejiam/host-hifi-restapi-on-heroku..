@@ -1,4 +1,3 @@
-import asyncio
 import base64
 import json
 import os
@@ -7,7 +6,6 @@ from typing import Union
 import httpx
 import redis.asyncio as redis
 import rich
-import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse, HTMLResponse
@@ -702,16 +700,16 @@ async def search_cover(id: Union[int, None] = None, q: Union[str, None] = None):
         )
 
 
-async def main():
-    config = uvicorn.Config(
-        "main:app",
-        host="0.0.0.0",
-        port=5000,
-        workers=8,
-    )
-    server = uvicorn.Server(config)
-    await server.serve()
+# async def main():
+#     config = uvicorn.Config(
+#         "main:app",
+#         host="0.0.0.0",
+#         port=5000,
+#         workers=8,
+#     )
+#     server = uvicorn.Server(config)
+#     await server.serve()
 
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+#     asyncio.run(main())
