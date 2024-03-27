@@ -240,7 +240,7 @@ async def get_track(
             response_dict = {
                 "info_data": info_data,
                 "track_data": track_data,
-                "OriginalTrackUrl": audio_url,
+                "OriginalTrackUrl": audio_url.json(),
             }
 
             # Convert response dictionary to JSON-formatted string
