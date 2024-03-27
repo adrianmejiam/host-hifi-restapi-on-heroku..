@@ -1,2 +1,2 @@
-web: hypercorn module:app --workers 4 --host=0.0.0.0 --port=${PORT:-5000}
+web: hypercorn --workers 4 --bind 0.0.0.0:443  src.main:app
 
