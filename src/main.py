@@ -236,7 +236,7 @@ async def get_track(
             decode_manifest = base64.b64decode(final_data)
             con_json = json.loads(decode_manifest)
             audio_url = con_json.get("urls")[0]
-            au_j = {"OriginalTrackUrl": audio_url}
+            au_j = json.dumps({"OriginalTrackUrl": audio_url})
             fetch_info = info_data.json()
 
             return [fetch_info, track_data.json(), au_j]
