@@ -240,13 +240,12 @@ async def get_track(
             response_dict = {
                 "info_data": info_data,
                 "track_data": track_data,
-                "OriginalTrackUrl": audio_url.json(),
             }
 
             # Convert response dictionary to JSON-formatted string
             response_json = json.dumps(response_dict)
 
-            return response_json
+            return response_json, {"OriginalTrackUrl": audio_url}
 
     except KeyError:
         raise HTTPException(
