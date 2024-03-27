@@ -242,7 +242,7 @@ async def get_track(
             return {
                 "info_data": fetch_info,
                 "track_data": track_data.json(),
-            }, [{"OriginalTrackUrl": audio_url}]
+            }, {"OriginalTrackUrl": audio_url}
 
     except KeyError:
         raise HTTPException(
