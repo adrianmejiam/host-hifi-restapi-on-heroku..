@@ -194,7 +194,7 @@ async def doc():
                          await removePoweredByTextAndUrl();
       });
 
-      async function removePoweredByTextAndUrl() {
+      function removePoweredByTextAndUrl() {
           var poweredByLink = document.querySelector('.darklight-reference-promo');
           if (poweredByLink) {
             poweredByLink.textContent = ""; // Setting text content to empty string
