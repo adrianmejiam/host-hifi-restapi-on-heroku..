@@ -412,7 +412,7 @@ async def search_track(
                     album_tracks = album_info.json().get("rows")[1]["modules"][0][
                         "pagedList"
                     ]["items"]
-                    all_tracks.extend([track["item"]["id"] for track in album_tracks])
+                    all_tracks.extend([track["item"] for track in album_tracks])
 
                 return [alb, all_tracks]
 
