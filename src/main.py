@@ -397,7 +397,7 @@ async def search_track(
                 return sed
 
             if f:
-                artist_albums = f"https://api.tidalhifi.com/v1/pages/single-module-page/ae223310-a4c2-4568-a770-ffef70344441/4/a4f964ba-b52e-41e8-b25c-06cd70c1efad/2?artistId={f}&countryCode=US&deviceType=BROWSER"
+                artist_albums = f"https://api.tidal.com/v1/pages/single-module-page/ae223310-a4c2-4568-a770-ffef70344441/4/a4f964ba-b52e-41e8-b25c-06cd70c1efad/2?artistId={f}&countryCode=US&deviceType=BROWSER"
                 album_data = await clinet.get(url=artist_albums, headers=header)
                 alb = album_data.json()
 
@@ -407,32 +407,14 @@ async def search_track(
 
                 all_tracks = []
                 for album_id in albums_ids:
-                    album_endpoint = f"https://listen.tidal.com/v1/pages/album?albumId={album_id}&countryCode=US&deviceType=BROWSER"
+                    album_endpoint = f"https://api.tidal.com/v1/pages/album?albumId={album_id}&countryCode=US&deviceType=BROWSER"
                     album_info = await clinet.get(url=album_endpoint, headers=header)
                     album_tracks = album_info.json().get("rows")[1]["modules"][0][
                         "pagedList"
                     ]["items"]
                     all_tracks.extend([track["item"]["id"] for track in album_tracks])
 
-                final_results = []
-                for track_id_one in all_tracks:
-                    quality = "HI_RES_LOSSLESS" or "HI_RES" or "LOSSLESS" or "HIGH"
-
-                    track_url = f"https://api.tidalhifi.com/v1/tracks/{track_id_one}/playbackinfopostpaywall/v4?audioquality={quality}&playbackmode=STREAM&assetpresentation=FULL"
-
-                    track_data = await clinet.get(url=track_url, headers=header)
-
-                    final_data = track_data.json()["manifest"]
-                    decode_manifest = base64.b64decode(final_data)
-                    con_json = json.loads(decode_manifest)
-                    audio_url = con_json.get("urls")[0]
-                    au_j = {"OriginalTrackUrl": audio_url}
-
-                    final_results.append(au_j)
-
-                final = {"Tracks": final_results, "Albums": alb}
-
-                return [final]
+                return [alb]
 
     except httpx.ConnectTimeout:
         raise HTTPException(
