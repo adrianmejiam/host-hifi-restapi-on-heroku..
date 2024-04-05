@@ -414,7 +414,7 @@ async def search_track(
                     ]["items"]
                     all_tracks.extend([track["item"]["id"] for track in album_tracks])
 
-                return [alb]
+                return [alb, all_tracks]
 
     except httpx.ConnectTimeout:
         raise HTTPException(
