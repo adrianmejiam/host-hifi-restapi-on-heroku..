@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import time
 from typing import Union
 
 import httpx
@@ -400,6 +401,7 @@ async def search_track(
                 artist_albums = f"https://api.tidal.com/v1/pages/single-module-page/ae223310-a4c2-4568-a770-ffef70344441/4/a4f964ba-b52e-41e8-b25c-06cd70c1efad/2?artistId={f}&countryCode=US&deviceType=BROWSER"
                 album_data = await clinet.get(url=artist_albums, headers=header)
                 alb = album_data.json()
+                time.sleep(1)
 
                 albums_ids = []
                 for album in alb.get("rows")[0]["modules"][0]["pagedList"]["items"]:
