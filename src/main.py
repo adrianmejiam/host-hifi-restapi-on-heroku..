@@ -1,6 +1,8 @@
 import base64
 import json
 import os
+import random
+import time
 from typing import Union
 
 import httpx
@@ -399,7 +401,9 @@ async def search_track(
             if f:
                 artist_albums = f"https://api.tidal.com/v1/pages/single-module-page/ae223310-a4c2-4568-a770-ffef70344441/4/a4f964ba-b52e-41e8-b25c-06cd70c1efad/2?artistId={f}&countryCode=US&deviceType=BROWSER"
                 album_data = await clinet.get(url=artist_albums, headers=header)
+                sleep_time = random.randint(500, 5000) / 1000
                 alb = album_data.json()
+                time.sleep(sleep_time)
 
                 albums_ids = []
                 for album in alb.get("rows")[0]["modules"][0]["pagedList"]["items"]:
@@ -409,6 +413,7 @@ async def search_track(
                 for album_id in albums_ids:
                     album_endpoint = f"https://api.tidal.com/v1/pages/album?albumId={album_id}&countryCode=US&deviceType=BROWSER"
                     album_info = await clinet.get(url=album_endpoint, headers=header)
+                    time.sleep(sleep_time)
                     album_tracks = album_info.json().get("rows")[1]["modules"][0][
                         "pagedList"
                     ]["items"]
@@ -422,6 +427,7 @@ async def search_track(
 
                     track_data = await clinet.get(url=track_url, headers=header)
 
+                    time.sleep(sleep_time)
                     final_data = track_data.json()["manifest"]
                     decode_manifest = base64.b64decode(final_data)
                     con_json = json.loads(decode_manifest)
