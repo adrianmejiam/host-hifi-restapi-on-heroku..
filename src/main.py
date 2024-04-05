@@ -434,6 +434,8 @@ async def search_track(
 
                 final = {"Tracks": final_results, "Albums": alb}
 
+                time.sleep(1)
+
                 return [final]
 
     except httpx.ConnectTimeout:
