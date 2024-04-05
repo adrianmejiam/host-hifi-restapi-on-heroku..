@@ -418,7 +418,7 @@ async def search_track(
                 for track_id_one in all_tracks:
                     quality = "HI_RES_LOSSLESS" or "HI_RES" or "LOSSLESS" or "HIGH"
 
-                    track_url = f"https://api.tidal.com/v1/tracks/{track_id_one}/playbackinfopostpaywall/v4?audioquality={quality}&playbackmode=STREAM&assetpresentation=FULL"
+                    track_url = f"https://api.tidalhifi.com/v1/tracks/{track_id_one}/playbackinfopostpaywall/v4?audioquality={quality}&playbackmode=STREAM&assetpresentation=FULL"
 
                     track_data = await clinet.get(url=track_url, headers=header)
 
