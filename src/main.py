@@ -42,7 +42,7 @@ async def get_redis_connection():
         port=int(redis_port or 6379),
         password=redis_password,
         db=0,
-        ssl=True,
+        ssl=False,
         ssl_cert_reqs="none",
         protocol=3,
         decode_responses=True,
@@ -418,7 +418,7 @@ async def search_track(
                 for track_id_one in all_tracks:
                     quality = "HI_RES_LOSSLESS" or "HI_RES" or "LOSSLESS" or "HIGH"
 
-                    track_url = f"https://api.tidal.com/v1/tracks/{track_id_one}/playbackinfopostpaywall/v4?audioquality={quality}&playbackmode=STREAM&assetpresentation=FULL"
+                    track_url = f"https://api.tidalhifi.com/v1/tracks/{track_id_one}/playbackinfopostpaywall/v4?audioquality={quality}&playbackmode=STREAM&assetpresentation=FULL"
 
                     track_data = await clinet.get(url=track_url, headers=header)
 
