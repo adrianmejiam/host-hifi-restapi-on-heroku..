@@ -38,7 +38,8 @@
      <img width="150" alt="Deploy" src="https://www.herokucdn.com/deploy/button.svg"/>
 </a>
 
-<br>
+
+<br><br>
 
 # 📄 Documentation
 
