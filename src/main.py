@@ -165,60 +165,59 @@ async def doc():
 
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>HiFi API Reference</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
+</head>
+<body>
 
-    <!-- Add your own OpenAPI/Swagger spec file URL here: -->
-    <!-- Note: this includes our proxy, you can remove the following line if you do not need it -->
-    <!-- data-proxy-url="https://api.scalar.com/request-proxy" -->
-    <script
-      id="api-reference"
-      type="application/json"
-      data-url="https://tidal.401658.xyz/openapi.json"
-      data-proxy-url="https://api.scalar.com/request-proxy"
-    ></script>
-    <!-- You can also set a full configuration object like this -->
-    <!-- easier for nested objects -->
-    <script>
-      var configuration = {
+<script
+    id="api-reference"
+    type="application/json"
+    data-url="https://tidal.401658.xyz/openapi.json"
+    data-proxy-url="https://api.scalar.com/request-proxy"
+></script>
+<script>
+    var configuration = {
         theme: "saturn",
-      };
+    };
 
-          document.addEventListener("DOMContentLoaded", function() {
-            var observer = new MutationObserver(function(mutations) {
-              mutations.forEach(function(mutation) {
+    var apiReference = document.getElementById("api-reference");
+    apiReference.dataset.configuration = JSON.stringify(configuration);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference" onload="initMutationObserver()"></script>
+<script>
+    function initMutationObserver() {
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
                 if (!mutation.addedNodes) return;
 
                 removePoweredByTextAndUrl(); // Call your function to check for the element
-              });
             });
+        });
 
-            observer.observe(document.body, {
-              childList: true,
-              subtree: true,
-              attributes: false,
-              characterData: false,
-            });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: false,
+            characterData: false,
+        });
 
-            function removePoweredByTextAndUrl() {
-              var poweredByLink = document.querySelector('.darklight-reference-promo');
-              if (poweredByLink) {
-                poweredByLink.textContent = "";
-                poweredByLink.removeAttribute("href");
-              }
-            }
-          });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+        removePoweredByTextAndUrl(); // Initial call to remove if already present
+    }
 
-    </body>
-</html>
+    function removePoweredByTextAndUrl() {
+        var poweredByLink = document.querySelector('.darklight-reference-promo');
+        if (poweredByLink) {
+            poweredByLink.textContent = "";
+            poweredByLink.removeAttribute("href");
+        }
+    }
+</script>
 
-"""
+</body>
+</html>"""
     )
 
 
