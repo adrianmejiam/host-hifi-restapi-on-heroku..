@@ -166,7 +166,7 @@ async def doc():
 <!doctype html>
 <html>
 <head>
-    <title>HiFi API Reference</title>
+    <title>hifi api reference</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -178,43 +178,61 @@ async def doc():
     data-url="https://tidal.401658.xyz/openapi.json"
     data-proxy-url="https://api.scalar.com/request-proxy"
 ></script>
+
 <script>
+  document.addEventListener('DOMContentLoaded', () => {
     var configuration = {
-        theme: "saturn",
+      theme: "saturn",
     };
 
-    var apiReference = document.getElementById("api-reference");
-    apiReference.dataset.configuration = JSON.stringify(configuration);
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference" onload="initMutationObserver()"></script>
-<script>
-    function initMutationObserver() {
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (!mutation.addedNodes) return;
+    // Assuming the function needs to be executed after DOM is fully loaded
+    function removeTextAndHref() {
+      const pattern = /Powered by scalar\.com;
 
-                removePoweredByTextAndUrl(); // Call your function to check for the element
-            });
-        });
+      function removeTextUsingRegex(rootElement, regexPattern, replacementText) {
+          const nodes = rootElement.childNodes;
+          nodes.forEach(node => {
+              if (node.nodeType === 3) { // Node.TEXT_NODE
+                  const text = node.nodeValue;
+                  const newText = text.replace(regexPattern, replacementText);
+                  if (text !== newText) {
+                      node.nodeValue = newText;
+                  }
+              } else if (node.nodeType === 1) { // Node.ELEMENT_NODE
+                  removeTextUsingRegex(node, regexPattern, replacementText);
 
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: false,
-            characterData: false,
-        });
+                  if (node.classList.contains('darklight-reference-promo')) {
+                      node.removeAttribute('href');
+                  }
+              }
+          });
+      }
 
-        removePoweredByTextAndUrl(); // Initial call to remove if already present
+      // Initial cleanup
+      removeTextUsingRegex(document.body, pattern, '');
+
+      // Observer for dynamic content
+      const observer = new MutationObserver(mutations => {
+          mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                  if (node.nodeType === 1) { // Node.ELEMENT_NODE
+                      removeTextUsingRegex(node, pattern, '');
+                  }
+              });
+          });
+      });
+
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
     }
 
-    function removePoweredByTextAndUrl() {
-        var poweredByLink = document.querySelector('.darklight-reference-promo');
-        if (poweredByLink) {
-            poweredByLink.textContent = "";
-            poweredByLink.removeAttribute("href");
-        }
-    }
+    removeTextAndHref();
+  });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 
 </body>
 </html>"""
