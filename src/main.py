@@ -171,7 +171,6 @@ async def doc():
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 
     <!-- Add your own OpenAPI/Swagger spec file URL here: -->
     <!-- Note: this includes our proxy, you can remove the following line if you do not need it -->
@@ -189,23 +188,34 @@ async def doc():
         theme: "saturn",
       };
 
-      var apiReference = document.getElementById("api-reference");
-      apiReference.dataset.configuration = JSON.stringify(configuration);
-      
-      // Remove the text "Powered by scalar.com" and the URL while keeping the link
-      document.addEventListener("DOMContentLoaded", async function() {
-                         await removePoweredByTextAndUrl();
-      });
+          document.addEventListener("DOMContentLoaded", function() {
+            var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                if (!mutation.addedNodes) return;
 
-      function removePoweredByTextAndUrl() {
-          var poweredByLink = document.querySelector('.darklight-reference-promo');
-          if (poweredByLink) {
-            poweredByLink.textContent = ""; // Setting text content to empty string
-            poweredByLink.removeAttribute("href"); // Removing the href attribute
-          }
-        }
-    </script>
-  </body>
+                removePoweredByTextAndUrl(); // Call your function to check for the element
+              });
+            });
+
+            observer.observe(document.body, {
+              childList: true,
+              subtree: true,
+              attributes: false,
+              characterData: false,
+            });
+
+            function removePoweredByTextAndUrl() {
+              var poweredByLink = document.querySelector('.darklight-reference-promo');
+              if (poweredByLink) {
+                poweredByLink.textContent = "";
+                poweredByLink.removeAttribute("href");
+              }
+            }
+          });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+
+    </body>
 </html>
 
 """
