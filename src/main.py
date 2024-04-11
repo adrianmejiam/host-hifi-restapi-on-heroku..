@@ -171,6 +171,7 @@ async def doc():
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 
     <!-- Add your own OpenAPI/Swagger spec file URL here: -->
     <!-- Note: this includes our proxy, you can remove the following line if you do not need it -->
@@ -204,9 +205,7 @@ async def doc():
           }
         }
     </script>
-        <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
-
-    </body>
+  </body>
 </html>
 
 """
