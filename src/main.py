@@ -187,7 +187,7 @@ async def doc():
 
     // Assuming the function needs to be executed after DOM is fully loaded
     function removeTextAndHref() {
-      const pattern = /Powered by scalar\.com;
+      const pattern = /Powered by scalar\.com/g;
 
       function removeTextUsingRegex(rootElement, regexPattern, replacementText) {
           const nodes = rootElement.childNodes;
