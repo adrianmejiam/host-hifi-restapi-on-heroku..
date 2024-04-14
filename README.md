@@ -113,18 +113,6 @@ docker run --env-file .env -p 8000:8000 host-hifi-restapi-on-vercel
 
 <br>
 
-```env
-
-CLIENT_ID=
-CLIENT_SECRET=
-TIDAL_TOKEN=
-TIDAL_REFRESH=
-REDIS_URL=
-REDIS_PORT=
-REDIS_PASSWORD=
-USER_ID=
-
-```
 
 ```console
 git clone https://github.com/sachinsenal0x64/hifi-tui
