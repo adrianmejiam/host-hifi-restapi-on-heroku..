@@ -1,4 +1,14 @@
-# Rename env-example to .env
+
+# Clone the Repo
+https://github.com/sachinsenal0x64/host-hifi-restapi-on-vercel
+# Rename .env-example
+cd host-hifi-restapi-on-vercel
+mv .env-example .env
+# Build the Docker image
+docker build -t host-hifi-restapi-on-vercel .
+# Run the Docker contaer
+docker run --env-file .env -p 8000:8000 host-hifi-restapi-on-vercel
+
 
 CLIENT_ID= zU4XHVVkc2tDPo4t
 CLIENT_SECRET= VJKhDFqJPqvsPVNBV6ukXTJmwlvbttP7wlMlrc72se4=
